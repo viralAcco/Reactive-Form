@@ -23,7 +23,7 @@ export class ActiveVendorComponent implements OnInit {
 
   infoForm = this.fb.group({
     name: ['', Validators.required],
-    email: ['', Validators.required],
+    email: ['', [Validators.required,Validators.email]],
     bio: ['', Validators.required],
     domain: ['', Validators.required]
   })
@@ -40,12 +40,22 @@ export class ActiveVendorComponent implements OnInit {
   get domain(){
     return this.infoForm.get('domain')
   }
-
-  data:any;
+  temp:any;
+  data:any = [];
+  visible:boolean = false;
   submitUser(){
-    this.data = this.infoForm.value;
-    this.infoForm.reset();  
+    // this.data = this.infoForm.value;
+    // this.data = this.data.slice().reverse();
+    this.temp = this.infoForm.value;
+    // for(let i = 0; i < 4; i++){
+    //   this.data[i] = this.temp[3-i]l 
+    // }
+    this.data.push(this.temp.name);
+    this.data.push(this.temp.email);
+    this.data.push(this.temp.bio);
+    this.data.push(this.temp.domain);
+    this.visible = true;
+    console.log(this.data);
+    this.infoForm.reset();
   }
-
-
 }
