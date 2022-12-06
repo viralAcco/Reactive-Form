@@ -50,6 +50,7 @@ export class ActiveVendorComponent implements OnInit {
     // for(let i = 0; i < 4; i++){
     //   this.data[i] = this.temp[3-i]l 
     // }
+    this.data = [];
     this.data.push(this.temp.name);
     this.data.push(this.temp.email);
     this.data.push(this.temp.bio);
